@@ -5,15 +5,27 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "test:bdd": "npx bddgen && npx playwright test"
+    "test:bdd": "npx bddgen && npx playwright test",
+    "test:bdd-ui": "npx bddgen && npx playwright test --ui",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@cucumber/cucumber": "^12.9.0",
+    "@eslint/js": "^10.0.1",
+    "@faker-js/faker": "^10.5.0",
     "@playwright/test": "^1.60.0",
     "@types/node": "^25.9.1",
-    "playwright-bdd": "^8.5.1"
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-playwright": "^2.11.0",
+    "playwright-bdd": "^8.5.1",
+    "prettier": "^3.9.6",
+    "typescript-eslint": "^8.67.0"
   }
 }

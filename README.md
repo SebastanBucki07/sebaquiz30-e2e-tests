@@ -3,6 +3,7 @@
 Repository containing automated End-to-End tests for the SebaQuiz application.
 
 ## Tech Stack
-* Playwright
-* Cucumber (Gherkin)
-* TypeScript
+
+- Playwright
+- Cucumber (Gherkin)
+- TypeScript

@@ -2,59 +2,56 @@ import { defineConfig, devices } from '@playwright/test';
 import { defineBddConfig } from 'playwright-bdd';
 
 const testDir = defineBddConfig({
-    features: 'features/**/*.feature',
-    steps: 'steps/**/*.ts',
+  features: 'features/**/*.feature',
+  steps: 'steps/**/*.ts',
 });
 
 export default defineConfig({
-    testDir,
+  testDir,
 
-    timeout: 60 * 1000,
+  timeout: 60 * 1000,
 
-    expect: {
-        timeout: 5000,
+  expect: {
+    timeout: 5000,
+  },
+
+  fullyParallel: true,
+
+  forbidOnly: !!process.env.CI,
+
+  retries: process.env.CI ? 2 : 0,
+
+  workers: process.env.CI ? 1 : undefined,
+
+  reporter: [['html', { open: 'never' }], ['list']],
+
+  use: {
+    baseURL: 'https://sebaquiz30.netlify.app',
+
+    trace: 'retain-on-failure',
+
+    video: 'retain-on-failure',
+
+    screenshot: 'only-failure',
+
+    ignoreHTTPSErrors: true,
+  },
+
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
     },
 
-    fullyParallel: true,
-
-    forbidOnly: !!process.env.CI,
-
-    retries: process.env.CI ? 2 : 0,
-
-    workers: process.env.CI ? 1 : undefined,
-
-    reporter: [
-        ['html', { open: 'never' }],
-        ['list']
-    ],
-
-    use: {
-        baseURL: 'https://sebaquiz30.netlify.app',
-
-        trace: 'retain-on-failure',
-
-        video: 'retain-on-failure',
-
-        screenshot: 'only-failure',
-
-        ignoreHTTPSErrors: true,
-    },
-
-    projects: [
-        {
-            name: 'chromium',
-            use: { ...devices['Desktop Chrome'] },
-        },
-        {
-            name: 'firefox',
-            use: { ...devices['Desktop Firefox'] },
-        },
-        {
-            name: 'webkit',
-            use: { ...devices['Desktop Safari'] },
-        },
-
-        /*
+    /*
         {
           name: 'Mobile Chrome',
           use: { ...devices['Pixel 5'] },
@@ -64,7 +61,7 @@ export default defineConfig({
           use: { ...devices['iPhone 12'] },
         },
         */
-    ],
+  ],
 
-    outputDir: 'test-results/',
+  outputDir: 'test-results/',
 });
