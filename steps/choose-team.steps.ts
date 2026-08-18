@@ -143,7 +143,10 @@ When('I add {int} random teams', async ({ page }, count: string) => {
   await chooseTeamPage.isAt();
   const numberOfTeams = parseInt(count, 10);
   for (let i = 0; i < numberOfTeams; i++) {
-    const randomTeamName = `${faker.word.adjective()} ${faker.animal.type()}`;
+    let randomTeamName;
+    do {
+      randomTeamName = `${faker.word.adjective()} ${faker.animal.type()}`;
+    } while (randomTeamName.length > 15);
     await chooseTeamPage.typeTeamName(randomTeamName);
     await chooseTeamPage.clickAddTeamButton();
   }

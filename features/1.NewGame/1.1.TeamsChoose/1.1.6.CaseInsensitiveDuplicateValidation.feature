@@ -9,5 +9,4 @@ Feature: 1.1.6.Case insensitive duplicate validation
       | Name  |
       | Legia |
     And I type "LEGIA" in "teamName" field
-    And I click add team button
-    Then I should see validation message "Nazwa drużyny już istnieje!"
+    Then I should see validation message "Drużyna o tej nazwie już istnieje!"

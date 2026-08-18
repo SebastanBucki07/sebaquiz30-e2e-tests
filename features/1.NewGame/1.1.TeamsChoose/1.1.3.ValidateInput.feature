@@ -6,9 +6,8 @@ Feature: 1.1.3.Team Input Validation
 
   Scenario Outline: 1.1.3.1.Validation of minimum character length
     When I type "<TypedName>" in "teamName" field
-    Then I should see validation message "Minimum 4 znaki!"
+    Then I should see validation message "Nazwa musi mieć co najmniej 4 znaki!"
     And Add team button is disabled
-    And I click add team button
 
     Examples:
       | TypedName |
@@ -21,8 +20,7 @@ Feature: 1.1.3.Team Input Validation
       | Name      |
       | FirstTeam |
     When I type "FirstTeam" in "teamName" field
-    And I click add team button
-    Then I should see validation message "Nazwa drużyny już istnieje!"
+    Then I should see validation message "Drużyna o tej nazwie już istnieje!"
     And Add team button is disabled
 
   Scenario: 1.1.3.3.Prevent adding team names with only whitespaces
@@ -38,7 +36,7 @@ Feature: 1.1.3.Team Input Validation
 
   Scenario: 1.1.3.5.Validation of maximum character length
     When I type "TaNazwaDruzynyJestZdecydowanieZaDlugaIPrzekraczaTrzydziesciZnakow" in "teamName" field
-    Then I should see validation message "Maksymalnie 30 znaków!"
+    Then I should see validation message "Nazwa nie może przekraczać 20 znaków!"
     And Add team button is disabled
 
   Scenario: 1.1.3.6.Add team with special characters and emojis

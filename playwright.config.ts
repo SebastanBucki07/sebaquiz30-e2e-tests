@@ -26,7 +26,7 @@ export default defineConfig({
   reporter: [['html', { open: 'never' }], ['list']],
 
   use: {
-    baseURL: 'https://sebaquiz30.netlify.app',
+    baseURL: 'http://localhost:4200/',
 
     trace: 'retain-on-failure',
 
